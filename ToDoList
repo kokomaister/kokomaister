@@ -1,0 +1,45 @@
+tasks = []
+
+def add_task(task):
+    tasks.append(task)
+    print(f"Task '{task}' added.")
+
+def view_tasks():
+    if tasks:
+        print("To-Do List:")
+        for index, task in enumerate(tasks, start=1):
+            print(f"{index}. {task}")
+    else:
+        print("Your to-do list is empty.")
+
+def complete_task(index):
+    if 1 <= index <= len(tasks):
+        completed_task = tasks.pop(index - 1)
+        print(f"Task '{completed_task}' marked as completed.")
+    else:
+        print("Invalid task number.")
+
+# Main loop
+while True:
+    print("\nOptions:")
+    print("1. Add a task")
+    print("2. View tasks")
+    print("3. Mark a task as completed")
+    print("4. Quit")
+
+    choice = input("Enter your choice: ")
+
+    if choice == "1":
+        task = input("Enter a task: ")
+        add_task(task)
+    elif choice == "2":
+        view_tasks()
+    elif choice == "3":
+        view_tasks()
+        index = int(input("Enter the task number to mark as completed: "))
+        complete_task(index)
+    elif choice == "4":
+        print("Goodbye!")
+        break
+    else:
+        print("Invalid choice. Please select a valid option.")    
